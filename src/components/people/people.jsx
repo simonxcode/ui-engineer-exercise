@@ -35,6 +35,11 @@ const BlankPanel = styled(Panel)`
   height: 166px;
 `
 
+const ActivityTitle = styled.p`
+  font-size: 18px;
+  padding: 14px;
+`
+
 const Tab = styled.button`
   width: 100%;
   font-size: 20px;
@@ -121,6 +126,7 @@ const People = () => {
       <CenterColumn>
         <Tabs />
         <Panel>
+          <ActivityTitle>Past Activities</ActivityTitle>
           {activity.map(activity => (
             <ActivityPanel key={activity.id} activity={activity} />
             ))}
