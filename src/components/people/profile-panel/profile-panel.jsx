@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types'
 
-const PeoplePanel = ({contact}) => {
+const ProfilePanel = ({contact}) => {
 
   const displayName = contact.display_name
   const title = contact.title
@@ -24,8 +24,8 @@ const PeoplePanel = ({contact}) => {
   )
 }
 
-PeoplePanel.propTypes = {
+ProfilePanel.propTypes = {
   contact: PropTypes.object
 }
 
-export default PeoplePanel
+export default ProfilePanel

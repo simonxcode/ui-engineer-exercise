@@ -38,10 +38,10 @@ const Tab = styled.button`
   padding: 10px 60px;
   cursor: pointer;
   opacity: 0.6;
-  background: white;
+  background: #FFFFFF;
   border: 0;
   outline: 0;
-  ${({ active }) => active && `border-bottom: 3px solid #4DC6FF; opacity: 1;`}
+  ${({ active }) => active && `border-bottom: 3px solid #4DC6FF;`}
 `;
 
 const ButtonGroup = styled.div`
@@ -54,9 +54,6 @@ const Content = styled.div`
   font-size: 20px;
 `;
 
-const TabContent = styled.div`
-  padding: .5rem;
-`
 
 const types = ["Activity", "Tracking", "Reminders"];
 
@@ -76,9 +73,6 @@ const Tabs = () => {
           </Tab>
         ))}
       </ButtonGroup>
-      <TabContent>
-      {active}
-      </TabContent>
     </>
   );
 };
@@ -146,4 +140,3 @@ People.propsTypes = {
 }
 
 export default People
-
