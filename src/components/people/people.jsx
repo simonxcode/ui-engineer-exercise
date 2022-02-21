@@ -7,6 +7,8 @@ import ActivityPanel from './activity-panel'
 
 const Header = styled.div`
   display: block;
+  font-size: 20px;
+  padding: 16px 20px;
   background-color: #FFFFFF;
   border-bottom: 1px solid #E5E5E5; 
 `
@@ -34,6 +36,7 @@ const BlankPanel = styled(Panel)`
 `
 
 const Tab = styled.button`
+  width: 100%;
   font-size: 20px;
   padding: 10px 60px;
   cursor: pointer;

@@ -8,11 +8,12 @@ const GlobalStyle = createGlobalStyle `
     background-color: #F9FAFB;
   }
 `
+
 export const App = () => {
   return (
     <>
-      <GlobalStyle />
-      <People />
+    <GlobalStyle />
+    <People />
     </>
   )
 };
