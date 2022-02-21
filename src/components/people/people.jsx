@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components'
 import axios from 'axios'
+import PropTypes from 'prop-types'
 import ProfilePanel from './profile-panel'
-import Activity from './activity-panel'
+import ActivityPanel from './activity-panel'
 
 const Header = styled.div`
   display: block;
@@ -38,12 +39,24 @@ const BlankPanel = styled(Panel)`
 
 const People = () => {
   const [contact, setContact] = useState({})
+  const [activity, setActivity] = useState([])
 
   useEffect(() => {
     axios.get('https://ui-offline-exercise.s3.amazonaws.com/data/people.json')
       .then((res) => {
         console.log(res)
         setContact(res.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [])
+
+  useEffect(() => {
+    axios.get('https://ui-offline-exercise.s3.amazonaws.com/data/past_activities/1.json')
+      .then((res) => {
+        console.log(res)
+        setActivity(res.data.data)
       })
       .catch((err) => {
         console.log(err)
@@ -64,7 +77,9 @@ const People = () => {
       </LeftColumn>
       <CenterColumn>
         <Panel>
-          <Activity />  
+          {activity.map(activity => (
+            <ActivityPanel key={activity.id} activity={activity} />
+            ))}
         </Panel>
       </CenterColumn>
       <RightColumn>
@@ -76,6 +91,11 @@ const People = () => {
     </Content>    
     </>
   )
+}
+
+People.propsTypes = {
+  contact: PropTypes.object,
+  activity: PropTypes.object
 }
 
 export default People
