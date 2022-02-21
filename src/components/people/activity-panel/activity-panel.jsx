@@ -10,7 +10,7 @@ const ActivityPanel = ({activity}) => {
 
   return (
     <>
-      <p>{activityType}</p>
+      {activityType && <p>{activityType}</p>}
       <p>{user}</p>
       <p>{createDate}</p>
       <p>{createTime}</p>

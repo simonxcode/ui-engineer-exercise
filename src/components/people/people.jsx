@@ -10,10 +10,6 @@ const Header = styled.div`
   background-color: #FFFFFF;
   border-bottom: 1px solid #E5E5E5; 
 `
-const Content = styled.div`
-  display: flex;
-  padding: .5rem;
-`
 
 const LeftColumn = styled.div`
   width: 25%
@@ -36,6 +32,56 @@ const Panel = styled.div`
 const BlankPanel = styled(Panel)`
   height: 166px;
 `
+
+const Tab = styled.button`
+  font-size: 20px;
+  padding: 10px 60px;
+  cursor: pointer;
+  opacity: 0.6;
+  background: white;
+  border: 0;
+  outline: 0;
+  ${({ active }) => active && `border-bottom: 3px solid #4DC6FF; opacity: 1;`}
+`;
+
+const ButtonGroup = styled.div`
+  display: flex;
+`;
+
+const Content = styled.div`
+  display: flex;
+  padding: 16px;
+  font-size: 20px;
+`;
+
+const TabContent = styled.div`
+  padding: .5rem;
+`
+
+const types = ["Activity", "Tracking", "Reminders"];
+
+const Tabs = () => {
+  const [active, setActive] = useState(types[0]);
+
+  return (
+    <>
+      <ButtonGroup>
+        {types.map((type) => (
+          <Tab
+            key={type}
+            active={active === type}
+            onClick={() => setActive(type)}
+          >
+            {type}
+          </Tab>
+        ))}
+      </ButtonGroup>
+      <TabContent>
+      {active}
+      </TabContent>
+    </>
+  );
+};
 
 const People = () => {
   const [contact, setContact] = useState({})
@@ -76,6 +122,7 @@ const People = () => {
         <BlankPanel />
       </LeftColumn>
       <CenterColumn>
+        <Tabs />
         <Panel>
           {activity.map(activity => (
             <ActivityPanel key={activity.id} activity={activity} />
