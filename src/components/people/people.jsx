@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from 'styled-components'
+import axios from 'axios'
 import ProfilePanel from './profile-panel'
 import Activity from './activity-panel'
 
@@ -36,13 +37,26 @@ const BlankPanel = styled(Panel)`
 `
 
 const People = () => {
+  const [contact, setContact] = useState({})
+
+  useEffect(() => {
+    axios.get('https://ui-offline-exercise.s3.amazonaws.com/data/people.json')
+      .then((res) => {
+        console.log(res)
+        setContact(res.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [])
+
   return (
     <>
      <Header>People</Header>
     <Content>
       <LeftColumn>
         <Panel>
-          <ProfilePanel /> 
+          <ProfilePanel contact={contact} /> 
         </Panel>
         <BlankPanel />
         <BlankPanel />
