@@ -1,5 +1,6 @@
 import React from "react";
+import People from './components/people'
 
 export const App = () => {
-  return <>{/* YOUR CODE GOES HERE */}</>;
+  return <><People /></>;
 };
