@@ -1,8 +1,13 @@
 import React from "react";
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-
 import moment from 'moment'
+import { default as VoicemailIcon } from "../../../_starter/shared/Icons/Voicemail"
+import { default as BadgeIcon } from "../../../_starter/shared/Icons/Badge"
+import { default as EnvelopeIcon } from "../../../_starter/shared/Icons/Envelope"
+import { default as PhoneIcon } from "../../../_starter/shared/Icons/Phone"
+import { default as ReplyIcon } from "../../../_starter/shared/Icons/Reply"
+import { default as RocketIcon } from "../../../_starter/shared/Icons/Rocket"
 
 const ActivityContent = styled.div`
   display: flex;
@@ -52,9 +57,26 @@ const ActivityPanel = ({activity}) => {
   const createDate = moment.utc(activity.created_at).format('MMM D, YYYY')
   const createTime = moment.utc(activity.occurred_at).format('hh:mm A')
 
+  const getActivityIcon = () => {
+    if (activityType === 'voicemail') {
+      return <VoicemailIcon />
+    } else if (activityType === 'success') {
+      return <BadgeIcon />
+    } else if (activityType === 'sent_email'){
+      return <EnvelopeIcon />
+    } else if (activityType === 'call'){
+      return <PhoneIcon />
+    } else if (activityType === 'email_reply') {
+      return <ReplyIcon />
+    } else if (activityType === 'added_to_cadence') {
+      return <RocketIcon />
+    }
+  } 
+
   return (
     <>
     <ActivityContent>
+        {getActivityIcon()}
       <LeftColumn>
         <ActivityType>{activityType}</ActivityType>
         <UserName>{userName}</UserName>

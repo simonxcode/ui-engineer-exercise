@@ -41,15 +41,17 @@ const ActivityTitle = styled.p`
 `
 
 const Tab = styled.button`
-  width: 100%;
-  font-size: 20px;
-  padding: 10px 60px;
+  display: flex;
+  width: 50%;
+  justify-content:flex-start;
+  padding: 10px;
   cursor: pointer;
   opacity: 0.6;
   background: #FFFFFF;
   border: 0;
+  border-bottom: 1px solid #E5E5E5; 
   outline: 0;
-  ${({ active }) => active && `border-bottom: 3px solid #4DC6FF;`}
+  ${({ active }) => active && `border-bottom: 3px solid #4DC6FF; opacity: 1;`}
 `;
 
 const ButtonGroup = styled.div`
@@ -62,6 +64,11 @@ const Content = styled.div`
   font-size: 20px;
 `;
 
+const TabText = styled.p`
+  font-size: 14px;
+  weight: 600;
+  color: #3A3A3A;
+`
 
 const types = ["Activity", "Tracking", "Reminders"];
 
@@ -77,7 +84,7 @@ const Tabs = () => {
             active={active === type}
             onClick={() => setActive(type)}
           >
-            {type}
+            <TabText>{type}</TabText>
           </Tab>
         ))}
       </ButtonGroup>
@@ -124,8 +131,8 @@ const People = () => {
         <BlankPanel />
       </LeftColumn>
       <CenterColumn>
-        <Tabs />
         <Panel>
+          <Tabs />
           <ActivityTitle>Past Activities</ActivityTitle>
           {activity.map(activity => (
             <ActivityPanel key={activity.id} activity={activity} />
