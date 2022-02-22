@@ -9,8 +9,19 @@ import { default as PhoneIcon } from "../../../_starter/shared/Icons/Phone"
 import { default as ReplyIcon } from "../../../_starter/shared/Icons/Reply"
 import { default as RocketIcon } from "../../../_starter/shared/Icons/Rocket"
 
+const Main = styled.div`
+  display: flex;
+`
+
+const ActivityIcon = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+`
+
 const ActivityContent = styled.div`
   display: flex;
+  width: 100%;
   justify-content: space-between;
   border: 1px solid #E5E5E5;
   margin: 20px;
@@ -74,19 +85,19 @@ const ActivityPanel = ({activity}) => {
   } 
 
   return (
-    <>
-    <ActivityContent>
-        {getActivityIcon()}
-      <LeftColumn>
-        <ActivityType>{activityType}</ActivityType>
-        <UserName>{userName}</UserName>
-      </LeftColumn>
-      <RightColumn>
-        <CreateDate>{createDate}</CreateDate>
-        <CreateTime>{createTime}</CreateTime>
-      </RightColumn>
-    </ActivityContent>
-    </>
+    <Main>
+      <ActivityIcon>{getActivityIcon()}</ActivityIcon>
+      <ActivityContent>
+        <LeftColumn>
+          <ActivityType>{activityType}</ActivityType>
+          <UserName>{userName}</UserName>
+        </LeftColumn>
+        <RightColumn>
+          <CreateDate>{createDate}</CreateDate>
+          <CreateTime>{createTime}</CreateTime>
+        </RightColumn>
+      </ActivityContent>
+    </Main>
   )
 }
 
