@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import { createGlobalStyle } from 'styled-components'
 import People from './components/people'
 
@@ -12,8 +12,8 @@ const GlobalStyle = createGlobalStyle `
 export const App = () => {
   return (
     <>
-    <GlobalStyle />
-    <People />
+      <GlobalStyle />
+      <People />
     </>
   )
-};
+}

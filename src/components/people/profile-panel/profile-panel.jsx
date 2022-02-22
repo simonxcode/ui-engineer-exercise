@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { default as CloudIcon } from "../../../_starter/shared/Icons/Cloud"
-import { default as LinkedInIcon } from "../../../_starter/shared/Icons/LinkedIn"
-import { default as TwitterIcon } from "../../../_starter/shared/Icons/Twitter"
-import { default as LinkIcon } from "../../../_starter/shared/Icons/Link"
+import { default as CloudIcon } from '../../../_starter/shared/Icons/Cloud'
+import { default as LinkedInIcon } from '../../../_starter/shared/Icons/LinkedIn'
+import { default as TwitterIcon } from '../../../_starter/shared/Icons/Twitter'
+import { default as LinkIcon } from '../../../_starter/shared/Icons/Link'
 
 const DisplayName = styled.p`
   font-size: 24px;
@@ -77,7 +77,7 @@ const ProfilePanel = ({contact}) => {
         <CloudIconLink as='a' href={crmURL}><CloudIcon /></CloudIconLink>
         <LinkedInLink as='a' href={linkedInURL}><LinkedInIcon /></LinkedInLink>
         <TwitterLink as='a' href={twitterURL()}><TwitterIcon /></TwitterLink>
-        <LinkURL href={personCompanyWebsite}><LinkIcon /></LinkURL>
+        <LinkURL as='a' href={personCompanyWebsite}><LinkIcon /></LinkURL>
       </ContentIcon>
     </>
   )

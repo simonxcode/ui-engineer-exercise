@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import PropTypes from 'prop-types'
@@ -14,11 +14,11 @@ const Header = styled.div`
 `
 
 const LeftColumn = styled.div`
-  width: 25%
+  width: 25%;
 `
 
 const CenterColumn = styled.div`
-  width: 50%
+  width: 50%;
 `
 
 const RightColumn = styled.div`
@@ -70,10 +70,10 @@ const TabText = styled.p`
   color: #3A3A3A;
 `
 
-const types = ["Activity", "Tracking", "Reminders"];
+const types = ['Activity', 'Tracking', 'Reminders']
 
 const Tabs = () => {
-  const [active, setActive] = useState(types[0]);
+  const [active, setActive] = useState(types[0])
 
   return (
     <>
@@ -89,8 +89,8 @@ const Tabs = () => {
         ))}
       </ButtonGroup>
     </>
-  );
-};
+  )
+}
 
 const People = () => {
   const [contact, setContact] = useState({})
@@ -99,7 +99,6 @@ const People = () => {
   useEffect(() => {
     axios.get('https://ui-offline-exercise.s3.amazonaws.com/data/people.json')
       .then((res) => {
-        console.log(res)
         setContact(res.data)
       })
       .catch((err) => {
@@ -110,7 +109,6 @@ const People = () => {
   useEffect(() => {
     axios.get('https://ui-offline-exercise.s3.amazonaws.com/data/past_activities/1.json')
       .then((res) => {
-        console.log(res)
         setActivity(res.data.data)
       })
       .catch((err) => {
@@ -120,31 +118,31 @@ const People = () => {
 
   return (
     <>
-     <Header>People</Header>
-    <Content>
-      <LeftColumn>
-        <Panel>
-          <ProfilePanel contact={contact} /> 
-        </Panel>
-        <BlankPanel />
-        <BlankPanel />
-        <BlankPanel />
-      </LeftColumn>
-      <CenterColumn>
-        <Panel>
-          <Tabs />
-          <ActivityTitle>Past Activities</ActivityTitle>
-          {activity.map(activity => (
-            <ActivityPanel key={activity.id} activity={activity} />
-            ))}
-        </Panel>
-      </CenterColumn>
-      <RightColumn>
-        <BlankPanel />
-        <BlankPanel />
-        <BlankPanel />
-        <BlankPanel />
-      </RightColumn>
+      <Header>People</Header>
+      <Content>
+        <LeftColumn>
+          <Panel>
+            <ProfilePanel contact={contact} /> 
+          </Panel>
+          <BlankPanel />
+          <BlankPanel />
+          <BlankPanel />
+        </LeftColumn>
+        <CenterColumn>
+          <Panel>
+            <Tabs />
+            <ActivityTitle>Past Activities</ActivityTitle>
+            {activity.map(activity => (
+              <ActivityPanel key={activity.id} activity={activity} />
+              ))}
+          </Panel>
+        </CenterColumn>
+        <RightColumn>
+          <BlankPanel />
+          <BlankPanel />
+          <BlankPanel />
+          <BlankPanel />
+        </RightColumn>
     </Content>    
     </>
   )
